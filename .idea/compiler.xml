@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="XieCheng_Common" />
+        <module name="XieCheng_FileManager" />
+        <module name="XieCheng_Mapper" />
+        <module name="XieCheng_MQSys" />
+        <module name="XieCheng_Pojo" />
+        <module name="XieCheng_Service" />
+        <module name="XieCheng_UserProvider" />
+        <module name="XieCheng_WebData" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>
