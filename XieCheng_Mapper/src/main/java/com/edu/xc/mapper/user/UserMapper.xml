@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.edu.xc.mapper.user.UserMapper">
+  <resultMap id="UserMap" type="com.edu.xc.pojo.user.User">
+    <id column="no" jdbcType="VARCHAR" property="no" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="flag" jdbcType="INTEGER" property="flag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    no, phone, password, type, flag
+  </sql>
+  <select id="selectByPhone" parameterType="java.lang.String" resultMap="UserMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_user
+    where phone = #{phone,jdbcType=VARCHAR} and flag=1010
+  </select>
+
+  <insert id="insert" parameterType="com.edu.xc.pojo.user.User">
+    insert into t_user (no, phone, password, type, flag)
+    values (#{no,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{type,jdbcType=INTEGER}, 1010)
+  </insert>
+
+
+  <update id="updatepassword">
+    update t_user
+    set password = #{password,jdbcType=VARCHAR},
+    where phone = #{phone}
+  </update>
+
+
+</mapper>

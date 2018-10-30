@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.edu.xc.mapper.user.CardMapper">
+  <resultMap id="CardMap" type="com.edu.xc.pojo.user.Card">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="cardno" jdbcType="VARCHAR" property="cardno" />
+    <result column="fontimgurl" jdbcType="VARCHAR" property="fontimgurl" />
+    <result column="reverseimgurl" jdbcType="VARCHAR" property="reverseimgurl" />
+    <result column="handimgurl" jdbcType="VARCHAR" property="handimgurl" />
+    <result column="check" jdbcType="INTEGER" property="check" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, cardno, fontimgurl, reverseimgurl, handimgurl, check
+  </sql>
+
+  <select id="selectByUno" parameterType="java.lang.String" resultMap="CardMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_card
+    where uno = #{uno,jdbcType=VARCHAR}
+  </select>
+
+
+  <insert id="insert" parameterType="com.edu.xc.pojo.user.Card">
+    insert into t_card (cardno, fontimgurl,
+      reverseimgurl, handimgurl, check
+      )
+    values (#{cardno,jdbcType=VARCHAR}, #{fontimgurl,jdbcType=VARCHAR},
+      #{reverseimgurl,jdbcType=VARCHAR}, #{handimgurl,jdbcType=VARCHAR}, #{check,jdbcType=INTEGER}
+      )
+  </insert>
+
+  <update id="updateByPrimaryKey" parameterType="com.edu.xc.pojo.user.Card">
+    update t_card
+    set cardno = #{cardno,jdbcType=VARCHAR},
+      fontimgurl = #{fontimgurl,jdbcType=VARCHAR},
+      reverseimgurl = #{reverseimgurl,jdbcType=VARCHAR},
+      handimgurl = #{handimgurl,jdbcType=VARCHAR},
+      check = #{check,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -38,7 +38,7 @@
 
     <filter>
         <filter-name>crosFilter</filter-name>
-        <filter-class>com.qfedu.mm.common.filter.CrosFilter</filter-class>
+        <filter-class>com.edu.mm.common.filter.CrosFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>crosFilter</filter-name>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.edu.xc.mapper.user.UserLogsMapper">
+  <resultMap id="UserLogsMap" type="com.edu.xc.pojo.user.UserLogs">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="no" jdbcType="VARCHAR" property="no" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="msg" jdbcType="VARCHAR" property="msg" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+  </resultMap>
+  <resultMap extends="UserLogsMap" id="ResultMapWithBLOBs" type="com.edu.xc.pojo.user.UserLogs">
+    <result column="data" jdbcType="LONGVARCHAR" property="data" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, no, type, msg, createtime
+  </sql>
+
+  <insert id="insert" parameterType="com.edu.xc.pojo.user.UserLogs">
+    insert into t_userlogs (no, type,
+      msg, createtime, data
+      )
+    values (#{no,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER},
+      #{msg,jdbcType=VARCHAR}, now(), #{data,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+
+
+</mapper>

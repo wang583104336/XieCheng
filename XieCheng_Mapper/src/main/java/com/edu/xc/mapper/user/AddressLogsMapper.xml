@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.edu.xc.mapper.user.AddressLogsMapper">
+  <resultMap id="BaseResultMap" type="com.edu.xc.pojo.user.AddressLogs">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="uno" jdbcType="VARCHAR" property="uno" />
+    <result column="ip" jdbcType="VARCHAR" property="ip" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, uno, ip, address, createtime
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_addresslogs
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <insert id="insert" parameterType="com.edu.xc.pojo.user.AddressLogs">
+    insert into t_addresslogs (uno, ip,
+      address, createtime)
+    values ( #{uno,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR},
+      #{address,jdbcType=VARCHAR}, now())
+  </insert>
+
+
+</mapper>
